@@ -83,6 +83,11 @@ namespace Accounting.DataLayer.Services
             }
         }
 
+        public IEnumerable<Customers> getCustomersByFilter(string parameter)
+        {
+            return db.Customers.Where(c => c.FullName.ToLower().Contains(parameter) || c.Email.ToLower().Contains(parameter) || c.Mobile.ToLower().Contains(parameter)).ToList();
+        }
+
         public void save()
         {
             db.SaveChanges();

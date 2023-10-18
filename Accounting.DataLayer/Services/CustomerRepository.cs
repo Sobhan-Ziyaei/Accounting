@@ -10,8 +10,12 @@ namespace Accounting.DataLayer.Services
 {
     public class CustomerRepository : ICustomersRepository
     {
-        Accounting_DBEntities db = new Accounting_DBEntities();
+        private Accounting_DBEntities db;
 
+        public CustomerRepository(Accounting_DBEntities context)
+        {
+            db = context;
+        }
 
         public List<Customers> getAllCustomers()
         {

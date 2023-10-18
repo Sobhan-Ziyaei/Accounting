@@ -88,10 +88,7 @@ namespace Accounting.DataLayer.Services
             return db.Customers.Where(c => c.FullName.ToLower().Contains(parameter) || c.Email.ToLower().Contains(parameter) || c.Mobile.ToLower().Contains(parameter)).ToList();
         }
 
-        public void save()
-        {
-            db.SaveChanges();
-        }
+
 
 
     }

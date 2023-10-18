@@ -154,6 +154,10 @@
       <Project>{7ea974d9-6a80-4114-aaff-f2f1864f51d5}</Project>
       <Name>Accounting.DataLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Accounting.Utility\Accounting.Utility.csproj">
+      <Project>{feb69af4-80c5-4702-9384-286c04343071}</Project>
+      <Name>Accounting.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

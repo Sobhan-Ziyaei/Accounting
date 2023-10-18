@@ -52,5 +52,27 @@ namespace Accounting.App
 
             }
         }
+
+        private void btnDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            if (dgCustomers.CurrentRow != null)
+            {
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    string name = dgCustomers.CurrentRow.Cells[1].Value.ToString();
+                    if (RtlMessageBox.Show($"آیا از حذف {name} مطمئن هستید ؟", "توجه", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        int customerId = int.Parse(dgCustomers.CurrentRow.Cells[0].Value.ToString());
+                        db.customersRepository.deleteCustomer(customerId);
+                        db.save();
+                        BindGrid();
+                    }
+                }
+            }
+            else
+            {
+                RtlMessageBox.Show("لطفا یک شخص را انتخاب کنید");
+            }
+        }
     }
 }

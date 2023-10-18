@@ -86,6 +86,15 @@ namespace Accounting.App
 
         }
 
-
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+            var customerId = int.Parse(dgCustomers.CurrentRow.Cells[0].Value.ToString());
+            frmAddOrEdit frmAddOrEdit = new frmAddOrEdit();
+            frmAddOrEdit.customerId = customerId;
+            if (frmAddOrEdit.ShowDialog() == DialogResult.OK)
+            {
+                BindGrid();
+            }
+        }
     }
 }

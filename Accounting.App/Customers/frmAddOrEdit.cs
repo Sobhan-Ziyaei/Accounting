@@ -16,7 +16,7 @@ namespace Accounting.App
 {
     public partial class frmAddOrEdit : Form
     {
-        UnitOfWork db = new UnitOfWork();
+        public int customerId = 0;
         public frmAddOrEdit()
         {
             InitializeComponent();
@@ -41,12 +41,12 @@ namespace Accounting.App
             if (BaseValidator.IsFormValid(this.components))
             {
                 string imageName = Guid.NewGuid().ToString() + Path.GetExtension(pcCustomer.ImageLocation);
-                string path = Application.StartupPath + "/Images";
+                string path = Application.StartupPath + "/Images/";
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
-                pcCustomer.Image.Save(path+imageName);
+                pcCustomer.Image.Save(path + imageName);
                 Customers customer = new Customers()
                 {
 
@@ -57,9 +57,44 @@ namespace Accounting.App
                     CustomerImage = imageName,
 
                 };
-                db.customersRepository.insertCustomer(customer);
-                db.save();
+                if (customerId == 0)
+                {
+                    using (UnitOfWork db = new UnitOfWork())
+                    {
+                        db.customersRepository.insertCustomer(customer);
+                        db.save();
+                    }
+                }
+                else
+                {
+                    using (UnitOfWork db = new UnitOfWork())
+                    {
+                        customer.CustomerId = customerId;
+                        db.customersRepository.updateCustomer(customer);
+                        db.save();
+
+                    }
+                }
+
                 DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void frmAddOrEdit_Load(object sender, EventArgs e)
+        {
+            if (customerId != 0)
+            {
+                using (UnitOfWork db = new UnitOfWork())
+                {
+                    this.Text = "ویرایش شخص";
+                    btnSave.Text = "ویرایش";
+                    var customer = db.customersRepository.getCustomerById(customerId);
+                    txtName.Text = customer.FullName;
+                    txtMobile.Text = customer.Mobile;
+                    txtEmail.Text = customer.Email;
+                    txtAddress.Text = customer.Address;
+                    pcCustomer.ImageLocation = Application.StartupPath + "/Images/" + customer.CustomerImage;
+                }
             }
         }
     }

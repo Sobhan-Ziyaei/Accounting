@@ -1,4 +1,5 @@
 ﻿using Accounting.DataLayer.Repositories;
+using Accounting.ViewModels.Customers;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -88,8 +89,21 @@ namespace Accounting.DataLayer.Services
             return db.Customers.Where(c => c.FullName.ToLower().Contains(parameter) || c.Email.ToLower().Contains(parameter) || c.Mobile.ToLower().Contains(parameter)).ToList();
         }
 
-
-
-
+        public List<ListCustomersViewModel> getNameCustomers(string filter)
+        {
+            if (filter == "")
+            {
+                return db.Customers.Select(c => new ListCustomersViewModel
+                {
+                    customerId = c.CustomerId,
+                    fullName = c.FullName,
+                }).ToList();
+            }
+            return db.Customers.Where(c => c.FullName.ToLower().Contains(filter)).Select(c => new ListCustomersViewModel
+            {
+                customerId = c.CustomerId,
+                fullName = c.FullName,
+            }).ToList();
+        }
     }
 }

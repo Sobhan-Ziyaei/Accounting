@@ -21,12 +21,25 @@ namespace Accounting.DataLayer.Context
                 if (_customerRepository == null)
                 {
                     _customerRepository = new CustomerRepository(db);
-                } 
+                }
                 return _customerRepository;
             }
 
         }
 
+        private GenericRepository<Accounting> _accountingRepository;
+
+        public GenericRepository<Accounting> accountingRepository
+        {
+            get
+            {
+                if (_accountingRepository == null)
+                {
+                    _accountingRepository = new GenericRepository<Accounting>(db);
+                }
+                return _accountingRepository;
+            }
+        }
         public void save()
         {
             db.SaveChanges();

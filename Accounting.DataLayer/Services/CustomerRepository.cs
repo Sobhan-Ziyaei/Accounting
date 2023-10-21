@@ -105,5 +105,15 @@ namespace Accounting.DataLayer.Services
                 fullName = c.FullName,
             }).ToList();
         }
+
+        public int getCustomerIdByName(string name)
+        {
+            return db.Customers.First(c => c.FullName == name).CustomerId;
+        }
+
+        public string getCustomerNameById(int customerId)
+        {
+            return db.Customers.Find(customerId).FullName;
+        }
     }
 }

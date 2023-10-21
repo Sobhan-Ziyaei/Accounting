@@ -34,6 +34,8 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCustomers = new System.Windows.Forms.ToolStripButton();
             this.btnNewAccounting = new System.Windows.Forms.ToolStripButton();
+            this.btnReportPay = new System.Windows.Forms.ToolStripButton();
+            this.btnReportRecieve = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +63,9 @@
             // 
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCustomers,
-            this.btnNewAccounting});
+            this.btnNewAccounting,
+            this.btnReportPay,
+            this.btnReportRecieve});
             this.toolStrip2.Location = new System.Drawing.Point(0, 25);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(784, 62);
@@ -81,7 +85,7 @@
             // 
             // btnNewAccounting
             // 
-            this.btnNewAccounting.Image = global::Accounting.App.Properties.Resources._1370791030_credit_card;
+            this.btnNewAccounting.Image = global::Accounting.App.Properties.Resources._1371476499_todo_list;
             this.btnNewAccounting.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnNewAccounting.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNewAccounting.Name = "btnNewAccounting";
@@ -89,6 +93,28 @@
             this.btnNewAccounting.Text = "تراکنش جدید";
             this.btnNewAccounting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNewAccounting.Click += new System.EventHandler(this.btnNewAccounting_Click);
+            // 
+            // btnReportPay
+            // 
+            this.btnReportPay.Image = global::Accounting.App.Properties.Resources.servicesCosts;
+            this.btnReportPay.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportPay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportPay.Name = "btnReportPay";
+            this.btnReportPay.Size = new System.Drawing.Size(100, 59);
+            this.btnReportPay.Text = "گزارش پرداختی ها ";
+            this.btnReportPay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportPay.Click += new System.EventHandler(this.btnReportPay_Click);
+            // 
+            // btnReportRecieve
+            // 
+            this.btnReportRecieve.Image = global::Accounting.App.Properties.Resources._1370791030_credit_card;
+            this.btnReportRecieve.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReportRecieve.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReportRecieve.Name = "btnReportRecieve";
+            this.btnReportRecieve.Size = new System.Drawing.Size(98, 59);
+            this.btnReportRecieve.Text = "گزارش دریافتی‌ها ";
+            this.btnReportRecieve.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReportRecieve.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // Form1
             // 
@@ -120,6 +146,8 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnCustomers;
         private System.Windows.Forms.ToolStripButton btnNewAccounting;
+        private System.Windows.Forms.ToolStripButton btnReportPay;
+        private System.Windows.Forms.ToolStripButton btnReportRecieve;
     }
 }
 
